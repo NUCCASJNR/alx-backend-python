@@ -34,4 +34,4 @@ TypeError: can only concatenate str (not "int") to str
 
 - Linting and validation: code editors and continuous integration (CI) pipelines can be configured to automatically validate type-annotated code at build-time and catch bugs before they make it to production.
 
-![image](https://www.google.com/imgres?imgurl=https%3A%2F%2Fi.redd.it%2Fy9y25tefi5401.png&tbnid=aPOnp2DO99JZSM&vet=12ahUKEwiz4ISSosCAAxURtUwKHXvNDMkQMygAegQIARA7..i&imgrefurl=https%3A%2F%2Fwww.reddit.com%2Fr%2Fthe_donaldbailey%2F&docid=3YLEFLKY1NN-3M&w=2408&h=1488&q=strongly%20and%20statically%20typed&ved=2ahUKEwiz4ISSosCAAxURtUwKHXvNDMkQMygAegQIARA7)
+![image](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.reddit.com%2Fr%2Fthe_donaldbailey%2F&psig=AOvVaw2_JiG_x5XtMv7ATZ7BrqIw&ust=1691144448152000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCNDt65OiwIADFQAAAAAdAAAAABAE)
