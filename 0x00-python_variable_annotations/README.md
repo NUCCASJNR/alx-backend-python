@@ -33,4 +33,5 @@ TypeError: can only concatenate str (not "int") to str
 - Code documentation: thanks to them, a developer reading type-annotated code (his own or someone else’s) will know exactly what type each variables is supposed to be. This helps reduce bugs and exceptions and accelerate the development cycle.
 
 - Linting and validation: code editors and continuous integration (CI) pipelines can be configured to automatically validate type-annotated code at build-time and catch bugs before they make it to production.
-Copyright © 2023 ALX, All rights reserved.
+
+![image](https://www.google.com/imgres?imgurl=https%3A%2F%2Fi.redd.it%2Fy9y25tefi5401.png&tbnid=aPOnp2DO99JZSM&vet=12ahUKEwiz4ISSosCAAxURtUwKHXvNDMkQMygAegQIARA7..i&imgrefurl=https%3A%2F%2Fwww.reddit.com%2Fr%2Fthe_donaldbailey%2F&docid=3YLEFLKY1NN-3M&w=2408&h=1488&q=strongly%20and%20statically%20typed&ved=2ahUKEwiz4ISSosCAAxURtUwKHXvNDMkQMygAegQIARA7)
