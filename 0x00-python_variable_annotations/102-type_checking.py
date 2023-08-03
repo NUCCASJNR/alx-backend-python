@@ -7,7 +7,7 @@ Type checking annotated  module
 from typing import Tuple, List
 
 
-def zoom_array(lst: Tuple, factor: int = 2) -> Tuple:
+def zoom_array(lst: Tuple, factor: int = 2) -> List:
     """
     Zoomed Array
     """
