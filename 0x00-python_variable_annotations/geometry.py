@@ -2,7 +2,7 @@
 
 from typing import Tuple
 
-def calculate_rectangle_area(length: float, width: float) -> float:
+def calculate_rectangle_area(length: float,  width: float) -> float:
     """
     Calculate the area of a rectangle.
 
