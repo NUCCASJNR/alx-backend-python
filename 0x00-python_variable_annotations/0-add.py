@@ -2,6 +2,7 @@
 
 """
 A type-annotated Module for adding floats
+And return result as float also
 """
 
 
