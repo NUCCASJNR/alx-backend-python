@@ -1,0 +1,15 @@
+#!/usr/bin/env python3
+
+"""Async"""
+
+import random
+import asyncio
+
+
+async def wait_random(max_delay: int | float = 10) -> int | float:
+    """
+    Async function
+    """
+    delay = random.randint(0, max_delay)
+    await asyncio.sleep(delay)
+    return delay

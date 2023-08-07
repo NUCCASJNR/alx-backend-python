@@ -7,7 +7,7 @@ This is the readme for all my alx-africa Backend Python tasks
 Directories | Description
 ------------| ----------
 [0x00-python_variable_annotations](0x00-python_variable_annotations) | Variable Annotations
-
+[0x01-python_async_function](0x01-python_async_function) | Async IO in python
 
 ## STUDENT NAME AND EMAIL ADDRESS
  ALAREEF
