@@ -4,11 +4,11 @@
 Async Generator
 """
 import asyncio
-from typing import Generator
+from typing import AsyncGenerator
 from random import uniform
 
 
-async def async_generator() -> Generator[float]:
+async def async_generator() -> AsyncGenerator[float, None]:
     """
     coroutine loops 10 times,
     each time asynchronously wait 1 second,
@@ -17,4 +17,4 @@ async def async_generator() -> Generator[float]:
 
     for _ in range(10):
         await asyncio.sleep(1)
-        yield uniform(0, 10)
+        yield uniform(1, 10)
