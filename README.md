@@ -8,6 +8,7 @@ Directories | Description
 ------------| ----------
 [0x00-python_variable_annotations](0x00-python_variable_annotations) | Variable Annotations
 [0x01-python_async_function](0x01-python_async_function) | Async IO in python
+[0x02-python_async_comprehension](0x02-python_async_comprehension) | Async comprehension
 
 ## STUDENT NAME AND EMAIL ADDRESS
  ALAREEF
