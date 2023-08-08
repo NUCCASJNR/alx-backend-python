@@ -4,11 +4,11 @@
 Async Generator
 """
 import asyncio
-from typing import List
+from typing import Generator
 from random import uniform
 
 
-async def async_generator() -> List[float]:
+async def async_generator() -> Generator[float]:
     """
     coroutine loops 10 times,
     each time asynchronously wait 1 second,
