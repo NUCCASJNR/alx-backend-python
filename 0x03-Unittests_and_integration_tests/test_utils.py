@@ -63,9 +63,6 @@ class TestMemoize(unittest.TestCase):
     """
     Class contans functions for testing memoize method
     """
-    def setUp(self) -> None:
-        print(f"Testing the Memoize Method")
-
     def test_memoize(self):
         """
         TestCase for utils.memoize
