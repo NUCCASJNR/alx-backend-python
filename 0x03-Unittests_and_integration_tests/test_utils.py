@@ -70,10 +70,16 @@ class TestMemoize(unittest.TestCase):
         class TestClass:
 
             def a_method(self):
+                """
+                Returns 42 when called
+                """
                 return 42
 
             @memoize
             def a_property(self):
+                """
+                invokes the a_method method
+                """
                 return self.a_method()
         test_obj = TestClass()
         with patch.object(test_obj, 'a_method') as mock:
