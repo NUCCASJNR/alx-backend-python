@@ -71,7 +71,9 @@ class TestMemoize(unittest.TestCase):
         TestCase for utils.memoize
         """
         class TestClass:
-
+            """
+            testclass class that contains a_method and a_property
+            """
             def a_method(self):
                 """
                 Returns 42 when called
