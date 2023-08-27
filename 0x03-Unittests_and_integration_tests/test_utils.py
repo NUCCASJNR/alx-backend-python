@@ -91,8 +91,8 @@ class TestMemoize(unittest.TestCase):
             mock.return_value = 42
             result1 = test_obj.a_property
             result2 = test_obj.a_property
-            self.assertEqual(result1, 42)
-            self.assertEqual(result2, 42)
+            self.assertEqual(result1, mock.return_value)
+            self.assertEqual(result2, mock.return_value)
             mock.assert_called_once()
 
 
