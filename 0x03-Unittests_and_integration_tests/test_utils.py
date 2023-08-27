@@ -13,6 +13,9 @@ from utils import access_nested_map, get_json, memoize
 
 
 class TestAccessNestedMap(unittest.TestCase):
+    def setUp(self) -> None:
+        print(f"Testing the AccessNestedMap Method")
+
     @parameterized.expand([
         ({"a": 1}, ("a",), 1),
         ({"a": {"b": 2}}, ("a",), {"b": 2}),
@@ -65,20 +68,11 @@ class TestMemoize(unittest.TestCase):
         TestCase for utils.memoize
         """
         class TestClass:
-            """
-            testclass class that contains a_method and a_property
-            """
             def a_method(self):
-                """
-                Returns 42 when called
-                """
                 return 42
 
             @memoize
             def a_property(self):
-                """
-                invokes the a_method method
-                """
                 return self.a_method()
         with patch.object(TestClass, 'a_method', return_value=42) as pmock:
             test_obj = TestClass()
