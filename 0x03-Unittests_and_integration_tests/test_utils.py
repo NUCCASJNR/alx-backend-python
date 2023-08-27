@@ -21,7 +21,8 @@ class TestAccessNestedMap(unittest.TestCase):
         ({"a": {"b": 2}}, ("a",), {"b": 2}),
         ({"a": {"b": 2}}, ("a", "b"), 2)
     ])
-    def test_access_nested_map(self, nested_map, path, output):
+    def test_access_nested_map(self, nested_map: Mapping, path: Sequence,
+                               output: Any) -> None:
         """TestCase for AccessNestedMap method"""
         result = access_nested_map(nested_map, path)
         self.assertEqual(result, output)
@@ -30,7 +31,8 @@ class TestAccessNestedMap(unittest.TestCase):
         ({}, ("a",), KeyError),
         ({"a": 1}, ("a", "b"), KeyError)
     ])
-    def test_access_nested_map_exception(self, nested_map, path, output):
+    def test_access_nested_map_exception(self, nested_map: Mapping, path:
+                                         Sequence, output: Any) -> None:
         """
         TestCase for AccessNestedMap keyError
         """
@@ -44,7 +46,7 @@ class TestGetJson(unittest.TestCase):
         ("http://example.com", {"payload": True}),
         ("http://holberton.io", {"payload": False})
     ])
-    def test_get_json(self, url, payload):
+    def test_get_json(self, url: str, payload: Dict):
         """
         TestCase for get_json method
         """
@@ -59,7 +61,7 @@ class TestGetJson(unittest.TestCase):
 
 class TestMemoize(unittest.TestCase):
     """
-    Class contans functions for testing memoize method
+    Test memoize method
     """
     def test_memoize(self):
         """
