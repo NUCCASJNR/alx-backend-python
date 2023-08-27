@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """
-This module tests the utils.access_nested_map function
+This module tests the utils.access_nested_map, utils.memoize function
 """
 
 import unittest
