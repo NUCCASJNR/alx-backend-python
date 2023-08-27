@@ -60,6 +60,9 @@ class TestGetJson(unittest.TestCase):
 
 
 class TestMemoize(unittest.TestCase):
+    """
+    Class contans functions for testing memoize method
+    """
     def setUp(self) -> None:
         print(f"Testing the Memoize Method")
 
