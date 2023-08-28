@@ -7,6 +7,7 @@ from unittest.mock import patch, PropertyMock
 from parameterized import parameterized
 
 from client import GithubOrgClient
+from utils import access_nested_map as anm
 
 
 class TestGithubOrgClient(unittest.TestCase):
@@ -30,7 +31,9 @@ class TestGithubOrgClient(unittest.TestCase):
         ('Netflix', ("https://api.github.com/orgs/Netflix/repos"))
     ])
     def test_public_repos_url(self, org_name, output):
-        """Test the GithubOrgClient.public-repos_url method"""
+        """Test the GithubOrgClient.public-r
+
+        epos_url method"""
         with patch('client.GithubOrgClient._public_repos_url',
                    new_callable=PropertyMock)as mock_public_repos_url:
             mock_public_repos_url.return_value = output
@@ -40,7 +43,7 @@ class TestGithubOrgClient(unittest.TestCase):
 
     @patch("client.get_json")
     def test_public_repos(self, mock_get_json):
-        """Test the GithubOrgClient.public_repos method"""
+        """Test the GithubOrgClient public_repos method"""
         payload = {
             "repos_url": "https://api.github.com/orgs/google/repos",
             "repos": [
@@ -76,15 +79,25 @@ class TestGithubOrgClient(unittest.TestCase):
                 },
             ]
         }
-
+        # print(anm(payload, (("repos"), )))
         mock_get_json.return_value = payload["repos"]
         with patch('client.GithubOrgClient._public_repos_url',
-                   new_callable=PropertyMock) as mock:
-            mock.return_value = payload["repos_url"]
+                   new_callable=PropertyMock) as pmock:
+            pmock.return_value = payload["repos_url"]
             public_repo = GithubOrgClient("google").public_repos()
+            print(public_repo)
             self.assertEqual(public_repo, ["episodes.dart", "cpp-netlib"])
-            mock.assert_called_once()
+            pmock.assert_called_once()
         mock_get_json.assert_called_once()
+
+    @parameterized.expand([
+        ({"license": {"key": "my_license"}}, "my_license", True),
+        ({"license": {"key": "other_license"}}, "my_license", False)
+    ])
+    def test_has_license(self, license, key, ret):
+        """Tests the has_license static method"""
+        repo_to_check = GithubOrgClient.has_license(license, key)
+        self.assertEqual(repo_to_check, ret)
 
 
 if __name__ == "__main__":
