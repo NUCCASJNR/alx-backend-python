@@ -86,9 +86,10 @@ class TestGithubOrgClient(unittest.TestCase):
         with patch('client.GithubOrgClient._public_repos_url',
                    new_callable=PropertyMock) as pmock:
             pmock.return_value = payload["repos_url"]
-            public_repo = GithubOrgClient("google").public_repos()
+            # public_repo = GithubOrgClient("google").public_repos()
             # print(public_repo)
-            self.assertEqual(public_repo, ["episodes.dart", "cpp-netlib"], )
+            self.assertEqual(GithubOrgClient("google").public_repos(),
+                             ["episodes.dart", "cpp-netlib"], )
             pmock.assert_called_once()
         mock_get_json.assert_called_once()
 
