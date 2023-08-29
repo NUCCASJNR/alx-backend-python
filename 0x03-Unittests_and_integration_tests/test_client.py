@@ -130,7 +130,7 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
         cls.get_patcher = patch('requests.get', side_effect=get_payload)
         cls.get_patcher.start()
 
-    def test_piblic_repos(self) -> None:
+    def test_public_repos(self) -> None:
         """Test the public repo method"""
         client = GithubOrgClient("google")
         public_repos = client.public_repos()
