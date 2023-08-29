@@ -3,10 +3,12 @@
 This module tests client.py
 """
 import unittest
-from unittest.mock import patch, PropertyMock
-from parameterized import parameterized
+import requests
+from unittest.mock import PropertyMock, patch, Mock
 
 from client import GithubOrgClient
+from fixtures import TEST_PAYLOAD
+from parameterized import parameterized, parameterized_class
 from utils import access_nested_map as anm
 
 
@@ -85,10 +87,10 @@ class TestGithubOrgClient(unittest.TestCase):
                    new_callable=PropertyMock) as pmock:
             pmock.return_value = payload["repos_url"]
             public_repo = GithubOrgClient("google").public_repos()
-            print(public_repo)
+            # print(public_repo)
             self.assertEqual(public_repo, ["episodes.dart", "cpp-netlib"])
             pmock.assert_called_once()
-        mock_get_json.assert_called_once()
+            mock_get_json.assert_called_once()
 
     @parameterized.expand([
         ({"license": {"key": "my_license"}}, "my_license", True),
@@ -98,6 +100,28 @@ class TestGithubOrgClient(unittest.TestCase):
         """Tests the has_license static method"""
         repo_to_check = GithubOrgClient.has_license(license, key)
         self.assertEqual(repo_to_check, ret)
+
+
+@parameterized_class(('payload', 'output'), [
+    {
+        'org_payload': TEST_PAYLOAD[0][0],
+        'repos_payload': TEST_PAYLOAD[0][1],
+        'expected_repos': TEST_PAYLOAD[0][2],
+        'apache_repos': TEST_PAYLOAD[0][3]
+    }
+])
+class TestIntegrationGithubOrgClient(unittest.TestCase):
+    """Integration test class"""
+    def setUp(self) -> None:
+        self.patcher = patch('requests.get')
+        self.mock_get = self.patcher.start()
+
+    def tearDown(self) -> None:
+        self.patcher.stop()
+
+    # def get_patcher(self):
+    #     """Patcher method"""
+    #     self.mock_get.return_value =
 
 
 if __name__ == "__main__":
