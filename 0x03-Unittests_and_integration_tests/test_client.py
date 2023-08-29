@@ -3,7 +3,7 @@
 This module tests client.py
 """
 import unittest
-import requests
+from requests import HTTPError
 from unittest.mock import PropertyMock, patch, Mock
 
 from client import GithubOrgClient
@@ -102,7 +102,7 @@ class TestGithubOrgClient(unittest.TestCase):
         self.assertEqual(repo_to_check, ret)
 
 
-@parameterized_class(('payload', 'output'), [
+@parameterized_class([
     {
         'org_payload': TEST_PAYLOAD[0][0],
         'repos_payload': TEST_PAYLOAD[0][1],
@@ -112,16 +112,25 @@ class TestGithubOrgClient(unittest.TestCase):
 ])
 class TestIntegrationGithubOrgClient(unittest.TestCase):
     """Integration test class"""
-    def setUp(self) -> None:
-        self.patcher = patch('requests.get')
-        self.mock_get = self.patcher.start()
+    @classmethod
+    def setUp(cls) -> None:
+        """Sets Up the class"""
+        routes_payload = {
+            "https://api.github.com/orgs/google": cls.org_payload,
+            "https://api.github.com/orgs/google/repos": cls.repos_payload
+        }
 
-    def tearDown(self) -> None:
-        self.patcher.stop()
+        def get_payload(url):
+            if url in routes_payload:
+                return Mock(**{'json.return_value': routes_payload[url]})
+            return HTTPError
+        cls.get_patcher = patch('requests.get', side_effect=get_payload)
+        cls.get_patcher.start()
 
-    # def get_patcher(self):
-    #     """Patcher method"""
-    #     self.mock_get.return_value =
+    @classmethod
+    def tearDown(cls) -> None:
+        """"Tear down the class"""
+        cls.get_patcher.stop()
 
 
 if __name__ == "__main__":
