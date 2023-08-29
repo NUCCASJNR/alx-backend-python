@@ -13,6 +13,7 @@ from utils import access_nested_map as anm
 
 
 class TestGithubOrgClient(unittest.TestCase):
+    """TestClass for GithublientOrg"""
     @parameterized.expand([
         ("google", {"key": "value"}),
         ("abc", {"key": "value"}),
