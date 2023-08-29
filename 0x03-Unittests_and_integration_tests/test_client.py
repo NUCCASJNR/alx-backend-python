@@ -15,7 +15,8 @@ from utils import access_nested_map as anm
 class TestGithubOrgClient(unittest.TestCase):
     @parameterized.expand([
         ("google", {"key": "value"}),
-        ("abc", {"key": "value"})
+        ("abc", {"key": "value"}),
+        ("Netflix", {"key": "value"})
     ])
     def test_org(self, org_name, output):
         """Test the GithubOrgClient.org method"""
@@ -28,9 +29,9 @@ class TestGithubOrgClient(unittest.TestCase):
             self.assertEqual(result, output)
 
     @parameterized.expand([
-        ("google", ("https://api.github.com/orgs/adobe/repos")),
-        ("abc", ("https://api.github.com/orgs/abc/repos")),
-        ('Netflix', ("https://api.github.com/orgs/Netflix/repos"))
+        ("google", "https://api.github.com/orgs/adobe/repos"),
+        ("abc", "https://api.github.com/orgs/abc/repos"),
+        ('Netflix', "https://api.github.com/orgs/Netflix/repos")
     ])
     def test_public_repos_url(self, org_name, output):
         """Test the GithubOrgClient.public-r
@@ -112,6 +113,7 @@ class TestGithubOrgClient(unittest.TestCase):
 ])
 class TestIntegrationGithubOrgClient(unittest.TestCase):
     """Integration test class"""
+
     @classmethod
     def setUp(cls) -> None:
         """Sets Up the class"""
