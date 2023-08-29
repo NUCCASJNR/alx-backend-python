@@ -34,7 +34,7 @@ class TestGithubOrgClient(unittest.TestCase):
         ('Netflix', "https://api.github.com/orgs/Netflix/repos")
     ])
     def test_public_repos_url(self, org_name, output):
-        """Test the GithubOrgClient.public-r
+        """Test the GithubOrgClient.public_r
 
         epos_url method"""
         with patch('client.GithubOrgClient._public_repos_url',
