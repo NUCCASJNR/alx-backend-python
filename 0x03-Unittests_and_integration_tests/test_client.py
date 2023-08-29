@@ -14,6 +14,7 @@ from utils import access_nested_map as anm
 
 class TestGithubOrgClient(unittest.TestCase):
     """TestClass for GithublientOrg"""
+
     @parameterized.expand([
         ("google", {"key": "value"}),
         ("abc", {"key": "value"}),
@@ -39,7 +40,7 @@ class TestGithubOrgClient(unittest.TestCase):
 
         epos_url method"""
         with patch('client.GithubOrgClient._public_repos_url',
-                   new_callable=PropertyMock)as mock_public_repos_url:
+                   new_callable=PropertyMock) as mock_public_repos_url:
             mock_public_repos_url.return_value = output
             client = GithubOrgClient(org_name)
             result = client._public_repos_url
@@ -58,9 +59,9 @@ class TestGithubOrgClient(unittest.TestCase):
                     "full_name": "google/episodes.dart",
                     "private": False,
                     "owner": {
-                            "login": "google",
-                            "id": 1342004,
-                            },
+                        "login": "google",
+                        "id": 1342004,
+                    },
                     "forks": 22,
                     "open_issues": 0,
                     "watchers": 12,
@@ -75,7 +76,7 @@ class TestGithubOrgClient(unittest.TestCase):
                     "owner": {
                         "login": "google",
                         "id": 1342004,
-                        },
+                    },
                     "forks": 59,
                     "open_issues": 0,
                     "watchers": 292,
@@ -104,14 +105,17 @@ class TestGithubOrgClient(unittest.TestCase):
         self.assertEqual(repo_to_check, ret)
 
 
-@parameterized_class([
+test_cases = [
     {
         'org_payload': TEST_PAYLOAD[0][0],
         'repos_payload': TEST_PAYLOAD[0][1],
         'expected_repos': TEST_PAYLOAD[0][2],
         'apache_repos': TEST_PAYLOAD[0][3]
     }
-])
+]
+
+
+@parameterized_class(test_cases)
 class TestIntegrationGithubOrgClient(unittest.TestCase):
     """Integration test class"""
 
@@ -127,6 +131,7 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
             if url in routes_payload:
                 return Mock(**{'json.return_value': routes_payload[url]})
             return HTTPError
+
         cls.get_patcher = patch('requests.get', side_effect=get_payload)
         cls.get_patcher.start()
 
