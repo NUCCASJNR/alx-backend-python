@@ -88,7 +88,7 @@ class TestGithubOrgClient(unittest.TestCase):
             pmock.return_value = payload["repos_url"]
             public_repo = GithubOrgClient("google").public_repos()
             # print(public_repo)
-            self.assertEqual(public_repo, ["episodes.dart", "cpp-netlib"])
+            self.assertEqual(public_repo, ["episodes.dart", "cpp-netlib"], )
             pmock.assert_called_once()
             mock_get_json.assert_called_once()
 
