@@ -90,7 +90,7 @@ class TestGithubOrgClient(unittest.TestCase):
             # print(public_repo)
             self.assertEqual(public_repo, ["episodes.dart", "cpp-netlib"], )
             pmock.assert_called_once()
-            mock_get_json.assert_called_once()
+        mock_get_json.assert_called_once()
 
     @parameterized.expand([
         ({"license": {"key": "my_license"}}, "my_license", True),
